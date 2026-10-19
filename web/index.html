@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0c0f" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta
+      name="description"
+      content="Interactive 3D demo of a self-service luggage locker facility."
+    />
+    <title>Locker Self-Service — Interactive 3D Demo</title>
+  </head>
+  <body>
+    <div id="viewport" aria-label="Interactive 3D locker room"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="topbar hud">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">LS</span>
+        <div>
+          <h1>Locker Self-Service</h1>
+          <p>Interactive 3D facility demo</p>
+        </div>
+      </div>
+      <div id="status" class="status-pill" role="status" aria-live="polite">
+        Loading facility…
+      </div>
+    </header>
+
+    <aside class="help hud" aria-label="Demo controls">
+      <h2>Explore the facility</h2>
+      <ul>
+        <li><kbd>Drag</kbd><span>Orbit the room</span></li>
+        <li><kbd>WASD</kbd><span>Move through the facility · hold Shift to sprint</span></li>
+        <li><kbd>Q / E</kbd><span>Lower or raise the camera</span></li>
+        <li><kbd>Scroll</kbd><span>Zoom in and out</span></li>
+        <li><span class="help-icon">1</span><span>Click a locker door to open or close it</span></li>
+        <li><span class="help-icon">2</span><span>Click the suitcase, then choose an open bottom locker</span></li>
+      </ul>
+      <div class="legend">
+        <span><i class="led led-green"></i>Available</span>
+        <span><i class="led led-red"></i>Occupied</span>
+        <span><i class="led led-blue"></i>Selection</span>
+      </div>
+    </aside>
+
+    <aside class="size-card hud" aria-label="Locker sizing" aria-live="polite">
+      <h2>Locker sizing</h2>
+      <div class="size-heading">
+        <span id="size-locker">LKR-D01</span>
+        <span id="size-tier" class="size-tier">XXXL</span>
+      </div>
+      <p class="size-model" id="size-model">E04A · 4 doors per tower</p>
+      <dl class="size-stats">
+        <div>
+          <dt>Compartment (H × W × D)</dt>
+          <dd id="size-compartment">907 × 432 × 485 mm</dd>
+        </div>
+        <div>
+          <dt>Volume per door</dt>
+          <dd id="size-volume">190 L</dd>
+        </div>
+      </dl>
+    </aside>
+
+    <div class="toolbar hud">
+      <div class="button-group" aria-label="Camera presets">
+        <button type="button" class="button active" data-preset="overview">Overview</button>
+        <button type="button" class="button" data-preset="entry">Entry</button>
+        <button type="button" class="button" data-preset="kiosk">Kiosk</button>
+        <button type="button" class="button" data-preset="lockers">Lockers</button>
+        <button type="button" class="button" data-preset="suitcase">Suitcase</button>
+      </div>
+      <div class="button-group" aria-label="Demo actions">
+        <button type="button" class="button" id="cutaway" aria-pressed="false">
+          Cutaway
+        </button>
+        <button type="button" class="button button-accent" id="remove-suitcase" hidden>
+          Remove suitcase
+        </button>
+        <button type="button" class="button" id="reset">Reset</button>
+      </div>
+    </div>
+
+    <div id="tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <div id="loading" class="loading">
+      <div class="loading-card">
+        <span class="brand-mark large" aria-hidden="true">LS</span>
+        <h2>Locker Self-Service</h2>
+        <p id="loading-message">Preparing the interactive facility…</p>
+        <div class="loading-track" role="progressbar" aria-label="Loading 3D assets">
+          <div id="loading-bar" class="loading-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
